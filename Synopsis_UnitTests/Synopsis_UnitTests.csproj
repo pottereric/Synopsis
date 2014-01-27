@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="FileReader_UnitTests\WhenAFileIsRead.cs" />
+    <Compile Include="MembersByAccessModifier_UnitTests\WhenASecondFileIsAnalized.cs" />
     <Compile Include="MembersByAccessModifier_UnitTests\WhenASimpleFileIsAnalized.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +62,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestData\Bracket.cs.test">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestData\JsonDocStore.cs.test">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

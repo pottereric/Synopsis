@@ -6,32 +6,38 @@ using System.Linq;
 namespace Synopsis_UnitTests.MembersByAccessModifier_UnitTests
 {
     [TestClass]
-    public class WhenASimpleFileIsAnalized
+    public class WhenASecondFileIsAnalized
     {
         private MembersByAccessModifier analyzer;
 
         [TestInitialize]
         public void Init()
         {
-            analyzer = new MembersByAccessModifier(FileReader.Read(@"TestData\JsonDocStore.cs.test"));
+            analyzer = new MembersByAccessModifier(FileReader.Read(@"TestData\Bracket.cs.test"));
         }
-        
+
         [TestMethod]
         public void ThenThereWillBeTheCorrectNumberOfPublicMethods()
         {
-            Assert.AreEqual(2, analyzer.PublicMethods.Count());
+            Assert.AreEqual(5, analyzer.PublicMethods.Count());
         }
 
         [TestMethod]
         public void ThereWillBeTheCorrectNumberOfPrivateMethods()
         {
-            Assert.AreEqual(1, analyzer.PrivateMethods.Count());
+            Assert.AreEqual(0, analyzer.PrivateMethods.Count());
+        }
+
+        [TestMethod]
+        public void ThenThereWillBeTHeCorrectNumberOfProtectedFields()
+        {
+            Assert.AreEqual(2, analyzer.ProtectedFields.Count());
         }
 
         [TestMethod]
         public void ThenThereWillBeTHeCorrectNumberOfPrivateFields()
         {
-            Assert.AreEqual(1, analyzer.PrivateFields.Count());
+            Assert.AreEqual(2, analyzer.PrivateFields.Count());
         }
 
         [TestMethod]
@@ -43,7 +49,7 @@ namespace Synopsis_UnitTests.MembersByAccessModifier_UnitTests
         [TestMethod]
         public void ThenThereWillBeTheCorrectNumberOfPublicConstructors()
         {
-            Assert.AreEqual(1, analyzer.PublicConstructors.Count());
+            Assert.AreEqual(0, analyzer.PublicConstructors.Count());
         }
     }
 }
