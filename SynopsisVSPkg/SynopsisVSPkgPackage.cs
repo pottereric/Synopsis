@@ -32,7 +32,7 @@ namespace Synopsis.SynopsisVSPkg
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     // This attribute registers a tool window exposed by this package.
-    [ProvideToolWindow(typeof(MyToolWindow))]
+    [ProvideToolWindow(typeof(MemberByAccessModifierViewWindow))]
     [Guid(GuidList.guidSynopsisVSPkgPkgString)]
     public sealed class SynopsisVSPkgPackage : Package
     {
@@ -58,7 +58,7 @@ namespace Synopsis.SynopsisVSPkg
             // Get the instance number 0 of this tool window. This window is single instance so this instance
             // is actually the only one.
             // The last flag is set to true so that if the tool window does not exists it will be created.
-            ToolWindowPane window = this.FindToolWindow(typeof(MyToolWindow), 0, true);
+            ToolWindowPane window = this.FindToolWindow(typeof(MemberByAccessModifierViewWindow), 0, true);
             if ((null == window) || (null == window.Frame))
             {
                 throw new NotSupportedException(Resources.CanNotCreateWindow);

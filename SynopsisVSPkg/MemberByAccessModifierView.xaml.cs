@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace Synopsis.SynopsisVSPkg
 {
     /// <summary>
-    /// Interaction logic for MyControl.xaml
+    /// Interaction logic for MemberByAccessModifierView.xaml
     /// </summary>
-    public partial class MyControl : UserControl
+    public partial class MemberByAccessModifierView : UserControl
     {
-        public MyControl(SynopsisVSPkgPackage package)
+        public MemberByAccessModifierView(SynopsisVSPkgPackage package)
         {
             InitializeComponent();
 

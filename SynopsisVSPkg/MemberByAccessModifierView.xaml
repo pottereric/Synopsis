@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Synopsis.SynopsisVSPkg.MyControl"
+﻿<UserControl x:Class="Synopsis.SynopsisVSPkg.MemberByAccessModifierView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -24,7 +24,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="FileName" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="again" />
         
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Public"/>
         <TextBlock Grid.Row="0" Grid.Column="2" Text="Protected"/>

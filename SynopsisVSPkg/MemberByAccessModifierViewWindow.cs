@@ -20,12 +20,12 @@ namespace Synopsis.SynopsisVSPkg
     /// implementation of the IVsUIElementPane interface.
     /// </summary>
     [Guid("3366386a-a827-493b-87dc-74197275d912")]
-    public class MyToolWindow : ToolWindowPane
+    public class MemberByAccessModifierViewWindow : ToolWindowPane
     {
         /// <summary>
         /// Standard constructor for the tool window.
         /// </summary>
-        public MyToolWindow() :
+        public MemberByAccessModifierViewWindow() :
             base(null)
         {
             // Set the window title reading it from the resources.
@@ -42,13 +42,13 @@ namespace Synopsis.SynopsisVSPkg
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on 
             // the object returned by the Content property.
             _package = base.Package as SynopsisVSPkgPackage;
-            _contentControl = new MyControl(_package);
+            _contentControl = new MemberByAccessModifierView(_package);
             base.Content = _contentControl;
             
         }
 
         private SynopsisVSPkgPackage _package;
-        private MyControl _contentControl;
+        private MemberByAccessModifierView _contentControl;
 
         public override void OnToolWindowCreated()
         {

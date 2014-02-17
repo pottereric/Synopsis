@@ -36,11 +36,11 @@ namespace SynopsisVSPkg_UnitTests.MyToolWindowTest
         public void MyToolWindowConstructorTest()
         {
 
-            MyToolWindow target = new MyToolWindow();
+            MemberByAccessModifierViewWindow target = new MemberByAccessModifierViewWindow();
             Assert.IsNotNull(target, "Failed to create an instance of MyToolWindow");
 
             MethodInfo method = target.GetType().GetMethod("get_Content", BindingFlags.Public | BindingFlags.Instance);
-            Assert.IsNotNull(method.Invoke(target, null), "MyControl object was not instantiated");
+            Assert.IsNotNull(method.Invoke(target, null), "MemberByAccessModifierView object was not instantiated");
 
         }
 
@@ -50,7 +50,7 @@ namespace SynopsisVSPkg_UnitTests.MyToolWindowTest
         [TestMethod()]
         public void WindowPropertyTest()
         {
-            MyToolWindow target = new MyToolWindow();
+            MemberByAccessModifierViewWindow target = new MemberByAccessModifierViewWindow();
             Assert.IsNotNull(target.Content, "Content property was null");
         }
 
