@@ -7,6 +7,7 @@ using System.Windows;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
+using EnvDTE;
 
 namespace Synopsis.SynopsisVSPkg
 {
@@ -42,7 +43,7 @@ namespace Synopsis.SynopsisVSPkg
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on 
             // the object returned by the Content property.
             _package = base.Package as SynopsisVSPkgPackage;
-            _contentControl = new MemberByAccessModifierView(_package);
+            _contentControl = new MemberByAccessModifierView();
             base.Content = _contentControl;
             
         }
@@ -64,7 +65,7 @@ namespace Synopsis.SynopsisVSPkg
 
             _package = base.Package as SynopsisVSPkgPackage;
 
-            _contentControl.Package = _package;
+            _contentControl.FileText = GetTextForActiveDocument(_package);
 
         }
 
@@ -72,7 +73,24 @@ namespace Synopsis.SynopsisVSPkg
         {
             _package = base.Package as SynopsisVSPkgPackage;
 
-            _contentControl.Package = _package;
+            _contentControl.FileText = GetTextForActiveDocument(_package);
+        }
+
+        private string GetTextForActiveDocument(SynopsisVSPkgPackage package)
+        {
+            var document = _package.IDE.ActiveDocument;
+
+            if (document != null)
+            {
+                var textDocument = (TextDocument)document.Object("TextDocument");
+                var fullText = textDocument.StartPoint.CreateEditPoint().GetText(textDocument.EndPoint);
+
+                return fullText;
+            }
+            else
+            {
+                return String.Empty;
+            }
         }
     }
 }
