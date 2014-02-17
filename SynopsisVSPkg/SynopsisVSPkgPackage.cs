@@ -53,7 +53,7 @@ namespace Synopsis.SynopsisVSPkg
         /// tool window. See the Initialize method to see how the menu item is associated to 
         /// this function using the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
-        private void ShowToolWindow(object sender, EventArgs e)
+        private void ShowMemberByAccessModifierViewWindow(object sender, EventArgs e)
         {
             // Get the instance number 0 of this tool window. This window is single instance so this instance
             // is actually the only one.
@@ -90,9 +90,9 @@ namespace Synopsis.SynopsisVSPkg
                 MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID );
                 mcs.AddCommand( menuItem );
                 // Create the command for the tool window
-                CommandID toolwndCommandID = new CommandID(GuidList.guidSynopsisVSPkgCmdSet, (int)PkgCmdIDList.cmdidViewMemberByAccessModifier);
-                MenuCommand menuToolWin = new MenuCommand(ShowToolWindow, toolwndCommandID);
-                mcs.AddCommand( menuToolWin );
+                CommandID viewMemberByAccessModifierCommandID = new CommandID(GuidList.guidSynopsisVSPkgCmdSet, (int)PkgCmdIDList.cmdidViewMemberByAccessModifier);
+                MenuCommand viewMemberByAccessModifierMenuToolWin = new MenuCommand(ShowMemberByAccessModifierViewWindow, viewMemberByAccessModifierCommandID);
+                mcs.AddCommand( viewMemberByAccessModifierMenuToolWin );
             }
         }
         #endregion
