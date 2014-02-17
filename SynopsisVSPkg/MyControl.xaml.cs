@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using EnvDTE;
+using Synopsis.SynopsisVSPkg.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Synopsis.SynopsisVSPkg
 {
@@ -19,17 +9,42 @@ namespace Synopsis.SynopsisVSPkg
     /// </summary>
     public partial class MyControl : UserControl
     {
-        public MyControl()
+        public MyControl(SynopsisVSPkgPackage package)
         {
             InitializeComponent();
+
+            if (package != null)
+            {
+                var vm = new MemberByAccessModifierViewModel();
+                this.DataContext = vm;
+            }
+            else
+            {
+                var vm = new MemberByAccessModifierViewModel();
+                this.DataContext = vm;
+            }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions")]
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(string.Format(System.Globalization.CultureInfo.CurrentUICulture, "We are inside {0}.button1_Click()", this.ToString()),
-                            "View Members By Access Modifier");
+        private SynopsisVSPkgPackage _package;
 
+        public SynopsisVSPkgPackage Package
+        {
+            get { return _package; }
+            set
+            {
+                _package = value;
+                var document = _package.IDE.ActiveDocument;
+
+                if (document != null)
+                {
+                    var textDocument = (TextDocument)document.Object("TextDocument");
+                    var fullText = textDocument.StartPoint.CreateEditPoint().GetText(textDocument.EndPoint);
+
+                    var vm = new MemberByAccessModifierViewModel();
+                    vm.SetDocument(fullText);
+                    this.DataContext = vm;
+                }
+            }
         }
     }
 }

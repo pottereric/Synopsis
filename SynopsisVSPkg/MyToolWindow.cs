@@ -41,7 +41,38 @@ namespace Synopsis.SynopsisVSPkg
             // This is the user control hosted by the tool window; Note that, even if this class implements IDisposable,
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on 
             // the object returned by the Content property.
-            base.Content = new MyControl();
+            _package = base.Package as SynopsisVSPkgPackage;
+            _contentControl = new MyControl(_package);
+            base.Content = _contentControl;
+            
+        }
+
+        private SynopsisVSPkgPackage _package;
+        private MyControl _contentControl;
+
+        public override void OnToolWindowCreated()
+        {
+            if(_package == null)
+            {
+                _package = base.Package as SynopsisVSPkgPackage;
+            }
+            var WindowEvents = _package.IDE.Events.get_WindowEvents(null);
+            WindowEvents.WindowActivated += WindowEvents_WindowActivated;
+
+
+            base.OnToolWindowCreated();
+
+            _package = base.Package as SynopsisVSPkgPackage;
+
+            _contentControl.Package = _package;
+
+        }
+
+        private void WindowEvents_WindowActivated(EnvDTE.Window GotFocus, EnvDTE.Window LostFocus)
+        {
+            _package = base.Package as SynopsisVSPkgPackage;
+
+            _contentControl.Package = _package;
         }
     }
 }

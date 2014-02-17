@@ -5,12 +5,12 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{898ece2e-6a1c-43ca-a2e3-7bd6f2bfd5d0}</ProjectGuid>
+    <ProjectGuid>{898ECE2E-6A1C-43CA-A2E3-7BD6F2BFD5D0}</ProjectGuid>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -138,8 +138,9 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="SynopsisVSPkgPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="PkgCmdID.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MemberByAccessModifierViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
@@ -168,15 +169,20 @@
   <ItemGroup>
     <None Include="Resources\Images.png" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <Page Include="MyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Synopsis\Synopsis.csproj">
+      <Project>{4556266d-1a1f-4174-b046-2e3d3e8c7aef}</Project>
+      <Name>Synopsis</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>

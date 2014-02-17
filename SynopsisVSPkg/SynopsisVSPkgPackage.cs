@@ -8,6 +8,8 @@ using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
+using EnvDTE80;
+using EnvDTE;
 
 namespace Synopsis.SynopsisVSPkg
 {
@@ -118,6 +120,19 @@ namespace Synopsis.SynopsisVSPkg
                        OLEMSGICON.OLEMSGICON_INFO,
                        0,        // false
                        out result));
+        }
+
+        /// <summary>
+        /// The top level application instance of the VS IDE that is executing this package.
+        /// </summary>
+        private DTE2 _ide;
+
+        /// <summary>
+        /// Gets the top level application instance of the VS IDE that is executing this package.
+        /// </summary>
+        public DTE2 IDE
+        {
+            get { return _ide ?? (_ide = (DTE2)GetService(typeof(DTE))); }
         }
 
     }

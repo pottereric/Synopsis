@@ -23,15 +23,33 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="FileName" />
+        
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Public"/>
         <TextBlock Grid.Row="0" Grid.Column="2" Text="Protected"/>
         <TextBlock Grid.Row="0" Grid.Column="3" Text="Private"/>
+
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Constructor"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Method"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Property"/>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Field"/>
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Event"/>
 
+        <ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding PublicConstructors}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding ProtectedConstructors}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding PrivateConstructors}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+
+        <ListBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding PublicMethods}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="2" Grid.Column="2" ItemsSource="{Binding ProtectedMethods}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="2" Grid.Column="3" ItemsSource="{Binding PrivateMethods}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+
+        <ListBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding PublicProperties}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="3" Grid.Column="2" ItemsSource="{Binding ProtectedProperties}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding PrivateProperties}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
         
+        <ListBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PublicFields}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="4" Grid.Column="2" ItemsSource="{Binding ProtectedFields}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
+        <ListBox Grid.Row="4" Grid.Column="3" ItemsSource="{Binding PrivateFields}" Background="{DynamicResource VsBrush.Window}" Foreground="{DynamicResource VsBrush.WindowText}"/>
     </Grid>
 </UserControl>
