@@ -65,9 +65,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\MethodCall.cs" />
+    <Compile Include="Entities\MethodDefinition.cs" />
+    <Compile Include="Entities\MethodsData.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="MembersByAccessModifier.cs" />
+    <Compile Include="MethodCalls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemanticAnalyzer.cs" />
+    <Compile Include="SyntaxAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -53,6 +53,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallArcs.xaml.cs">
+      <DependentUpon>CallArcs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemberByAccessModifierView.xaml.cs">
       <DependentUpon>MemberByAccessModifierView.xaml</DependentUpon>
     </Compile>
@@ -69,6 +72,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tools\ArcAdder.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MemberByAccessModifierViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -83,6 +87,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CallArcs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MemberByAccessModifierView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

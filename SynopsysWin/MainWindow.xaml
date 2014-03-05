@@ -1,11 +1,11 @@
-﻿<Window
+﻿<Window xmlns:SynopsisViews="clr-namespace:SynopsisViews;assembly=SynopsisViews" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:SynopsisVSPkg="clr-namespace:Synopsis.SynopsisVSPkg;assembly=SynopsisViews" x:Class="SynopsysWin.MainWindow"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
 
-        <SynopsisVSPkg:MemberByAccessModifierView x:Name="memberAccessModifierView" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="476"/>
-
+        <!--<SynopsisVSPkg:MemberByAccessModifierView x:Name="memberAccessModifierView" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="476"/>-->
+        <SynopsisViews:CallArcs />
     </Grid>
 </Window>
