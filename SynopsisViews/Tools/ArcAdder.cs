@@ -13,18 +13,18 @@ namespace SynopsisViews.Tools
     class ArcAdder
     {
         private Canvas _root;
-        private PathFigureCollection pathFigureCollection;
+        private PathFigureCollection _pathFigureCollection;
 
         public ArcAdder(Canvas layoutRoot)
         {
             _root = layoutRoot;
-            pathFigureCollection = new PathFigureCollection();
+            _pathFigureCollection = new PathFigureCollection();
         }
 
         public void AddCollectionToCanvas()
         {
             PathGeometry pathGeometry = new PathGeometry();
-            pathGeometry.Figures = pathFigureCollection;
+            pathGeometry.Figures = _pathFigureCollection;
 
             Path arcPath = new Path();
             arcPath.Stroke = new SolidColorBrush(Colors.Black);
@@ -37,21 +37,35 @@ namespace SynopsisViews.Tools
         {
             int horizontalPostion = 100;
 
+
+            var startPoint = new Point(horizontalPostion, start);
+            var endPoint = new Point(horizontalPostion, end);
+
             PathFigure pathFigure = new PathFigure();
-            pathFigure.StartPoint = new Point(horizontalPostion, start);
+            pathFigure.StartPoint = startPoint;
 
             ArcSegment arcSeg = new ArcSegment();
-            arcSeg.Point = new Point(horizontalPostion, end);
+            arcSeg.Point = endPoint;
             arcSeg.Size = new Size(25, 25);
             arcSeg.IsLargeArc = true;
             arcSeg.SweepDirection = SweepDirection.Clockwise;
             arcSeg.RotationAngle = 90;
 
+            var arrowhead = new Polygon();
+            arrowhead.Stroke = Brushes.Black;
+            arrowhead.StrokeThickness = 2;
+            arrowhead.Points.Add(new Point(endPoint.X - 4, endPoint.Y));
+            arrowhead.Points.Add(new Point(endPoint.X + 4, endPoint.Y + 3));
+            arrowhead.Points.Add(new Point(endPoint.X + 4, endPoint.Y - 3));
+            arrowhead.Fill = Brushes.Black;
+
             PathSegmentCollection myPathSegmentCollection = new PathSegmentCollection();
             myPathSegmentCollection.Add(arcSeg);
             pathFigure.Segments = myPathSegmentCollection;
 
-            pathFigureCollection.Add(pathFigure);
+            _pathFigureCollection.Add(pathFigure);
+
+            _root.Children.Add(arrowhead);
 
             return pathFigure;
         }

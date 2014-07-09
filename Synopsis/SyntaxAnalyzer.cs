@@ -53,9 +53,8 @@ namespace Synopsis
                 if (_firstClass == null)
                 {
 
-                    // TODO: don't hard code [0]
                     // Get the Namespace node
-                    NamespaceDeclarationSyntax namespaceDeclaration = (NamespaceDeclarationSyntax)Root.Members[0];
+                    NamespaceDeclarationSyntax namespaceDeclaration = (NamespaceDeclarationSyntax)Root.Members.First();
 
                     // Get the class node
                     var classes = namespaceDeclaration.Members;

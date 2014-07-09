@@ -15,6 +15,7 @@ namespace Synopsis
         {
         }
 
+
         private MetadataReference _mscorlib = MetadataReference.CreateAssemblyReference(
                                  "mscorlib");
 

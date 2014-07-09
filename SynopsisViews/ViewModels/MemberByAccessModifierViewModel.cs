@@ -18,14 +18,15 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
 
         public MemberByAccessModifierViewModel()
         {
-            // TODO - remove
-            //analyzer = new MembersByAccessModifier(FileReader.Read(@"H:\Projects\VelociRead\VelociRead\ViewModel\MainViewModel.cs"));
             analyzer = new MembersByAccessModifier(FileReader.Read(@"C:\SampleCode\Euler9.cs"));
         }
 
         public void SetDocument(string document)
         {
-            analyzer = new MembersByAccessModifier(document);
+            if (!String.IsNullOrWhiteSpace(document))
+            {
+                analyzer = new MembersByAccessModifier(document);
+            }
         }
 
         public IEnumerable<string> PublicConstructors 
