@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Synopsis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,10 @@ namespace SynopsysWin
         public MainWindow()
         {
             InitializeComponent();
-
+            arcVisualizer.CodeText = FileReader.Read(@"H:\Projects\Synopsis\TestFiles\SimpleDocStore.cs");
+            //arcVisualizer.CodeText = FileReader.Read(@"H:\Projects\Synopsis\TestFiles\Euler9.cs");
+            //arcVisualizer.CodeText = FileReader.Read(@"H:\Projects\Synopsis\TestFiles\Simple.cs");
+           
         }
     }
 }
