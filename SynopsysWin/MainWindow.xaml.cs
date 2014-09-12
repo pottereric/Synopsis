@@ -24,9 +24,9 @@ namespace SynopsysWin
         public MainWindow()
         {
             InitializeComponent();
-            arcVisualizer.CodeText = FileReader.Read(@"H:\Projects\Synopsis\TestFiles\SimpleDocStore.cs");
-            //arcVisualizer.CodeText = FileReader.Read(@"H:\Projects\Synopsis\TestFiles\Euler9.cs");
-            //arcVisualizer.CodeText = FileReader.Read(@"H:\Projects\Synopsis\TestFiles\Simple.cs");
+            //arcVisualizer.CodeText = FileReader.Read(@"..\..\..\TestFiles\SimpleDocStore.cs");
+            //arcVisualizer.CodeText = FileReader.Read(@"..\..\..\TestFiles\Euler9.cs");
+            arcVisualizer.CodeText = FileReader.Read(@"..\..\..\TestFiles\Simple.cs");
            
         }
     }

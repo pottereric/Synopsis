@@ -35,6 +35,23 @@ namespace SynopsisViews
             }
         }
 
+        public int VerticalScaleFactor
+        {
+            get
+            {
+                var linesInFile = LinesInFile;
+                var windowHeight = this.ActualHeight;
+                if (windowHeight == double.NaN || windowHeight == 0.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return (int)(windowHeight / linesInFile);
+                }
+            }
+        }
+
         public CallArcs()
         {
             InitializeComponent();
@@ -42,6 +59,7 @@ namespace SynopsisViews
 
         private void DrawArcs()
         {
+            
             var arcAdder = new ArcAdder(LayoutRoot);
 
             MethodCalls a = new MethodCalls(CodeText);
@@ -49,12 +67,12 @@ namespace SynopsisViews
 
             foreach (var methodCall in methodInfo.Calls)
             {
-                arcAdder.AddArc(methodCall.CallingLine * 5, methodCall.CalledLine * 5);
+                arcAdder.AddArc(methodCall.CallingLine * VerticalScaleFactor, methodCall.CalledLine * VerticalScaleFactor);
             }
 
             foreach (var definition in methodInfo.Definitions)
             {
-                AddTextToScreen(definition.Name, definition.Line);
+                AddTextToScreen(definition.Name, definition.Line * VerticalScaleFactor);
             }
 
             arcAdder.AddCollectionToCanvas();
@@ -70,9 +88,14 @@ namespace SynopsisViews
 
             Canvas.SetLeft(textBlock, 10);
 
-            Canvas.SetTop(textBlock, pos * 5);
+            Canvas.SetTop(textBlock, pos);
 
             LayoutRoot.Children.Add(textBlock);
+        }
+
+        private void LayoutRoot_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
+        {
+            DrawArcs();
         }
     }
 }

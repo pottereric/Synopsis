@@ -18,6 +18,7 @@ namespace SynopsisViews.Tools
         public ArcAdder(Canvas layoutRoot)
         {
             _root = layoutRoot;
+            _root.Children.Clear();
             _pathFigureCollection = new PathFigureCollection();
         }
 

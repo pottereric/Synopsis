@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Canvas x:Name="LayoutRoot" ></Canvas>
+        <Canvas x:Name="LayoutRoot" SizeChanged="LayoutRoot_SizeChanged" ></Canvas>
     </Grid>
 </UserControl>
