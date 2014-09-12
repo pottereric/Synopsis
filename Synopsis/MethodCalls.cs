@@ -37,12 +37,15 @@ namespace Synopsis
                 callData.CallingLine = methodCall.GetLocation().GetLineSpan(true).StartLinePosition.Line;
 
                 var methodCallSymbol = SematicModel.GetSymbolInfo(methodCall);
-                foreach (var location in methodCallSymbol.Symbol.Locations)
+                if (methodCallSymbol.Symbol != null)
                 {
-                    if (location.IsInSource)
+                    foreach (var location in methodCallSymbol.Symbol.Locations)
                     {
-                        callData.CalledLine = location.GetLineSpan(true).StartLinePosition.Line;
-                        methodCallData.Add(callData);
+                        if (location.IsInSource)
+                        {
+                            callData.CalledLine = location.GetLineSpan(true).StartLinePosition.Line;
+                            methodCallData.Add(callData);
+                        }
                     }
                 }
             }

@@ -6,6 +6,6 @@
     <Grid>
 
         <!--<SynopsisVSPkg:MemberByAccessModifierView x:Name="memberAccessModifierView" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="476"/>-->
-        <SynopsisViews:CallArcs />
+        <SynopsisViews:CallArcs x:Name="arcVisualizer" />
     </Grid>
 </Window>

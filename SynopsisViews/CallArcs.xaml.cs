@@ -1,19 +1,7 @@
 ﻿using Synopsis;
 using SynopsisViews.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SynopsisViews
 {
@@ -22,14 +10,41 @@ namespace SynopsisViews
     /// </summary>
     public partial class CallArcs : UserControl
     {
+        private string _codeText;
+
+        public string CodeText
+        {
+            get
+            {
+                return _codeText;
+            }
+            set
+            {
+                _codeText = value;
+                DrawArcs();
+            }
+        }
+
+        public int LinesInFile
+        {
+            get
+            {
+                Regex myRegex = new Regex("\n", RegexOptions.Multiline);
+                MatchCollection mCollection = myRegex.Matches(CodeText);
+                return mCollection.Count;
+            }
+        }
+
         public CallArcs()
         {
             InitializeComponent();
+        }
 
-
+        private void DrawArcs()
+        {
             var arcAdder = new ArcAdder(LayoutRoot);
 
-            MethodCalls a = new MethodCalls(testCode);
+            MethodCalls a = new MethodCalls(CodeText);
             var methodInfo = a.Analyze();
 
             foreach (var methodCall in methodInfo.Calls)
@@ -58,54 +73,6 @@ namespace SynopsisViews
             Canvas.SetTop(textBlock, pos * 5);
 
             LayoutRoot.Children.Add(textBlock);
-        }
-
-        private string testCode
-        {
-            get
-            {
-                return @"using System;
-
-namespace RoslynExploration
-{
-    internal class TestClass
-    {
-        public void MethodOne()
-        {
-            Console.WriteLine(""One"");
-            MethodOneA();
-            MethodOneB();
-        }
-
-        public void MethodTwo()
-        {
-            Console.WriteLine(""Two"");
-            MethodTwoA();
-            MethodTwoB();
-        }
-
-        private void MethodOneA()
-        {
-            Console.WriteLine(""One A"");
-        }
-
-        private void MethodOneB()
-        {
-            Console.WriteLine(""One B"");
-        }
-
-        private void MethodTwoA()
-        {
-            Console.WriteLine(""Two A"");
-        }
-
-        private void MethodTwoB()
-        {
-            Console.WriteLine(""Two B"");
-        }
-    }
-}"";";
-            }
         }
     }
 }

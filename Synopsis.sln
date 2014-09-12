@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synopsis", "Synopsis\Synopsis.csproj", "{4556266D-1A1F-4174-B046-2E3D3E8C7AEF}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisViews", "SynopsisViews\SynopsisViews.csproj", "{B6D7EDE0-4C87-40F8-B19D-6EE646F5DF97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsysWin", "SynopsysWin\SynopsysWin.csproj", "{C8458F09-3A11-4288-B42E-FAFBC8EB0336}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisViews.UnitTests", "SynopsisViews.UnitTests\SynopsisViews.UnitTests.csproj", "{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{C8458F09-3A11-4288-B42E-FAFBC8EB0336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8458F09-3A11-4288-B42E-FAFBC8EB0336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8458F09-3A11-4288-B42E-FAFBC8EB0336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
