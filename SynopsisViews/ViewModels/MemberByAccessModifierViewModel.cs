@@ -4,9 +4,6 @@
 //using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Synopsis.SynopsisVSPkg.ViewModels
 {
@@ -14,11 +11,8 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
     {
         private MembersByAccessModifier analyzer;
 
-
-
         public MemberByAccessModifierViewModel()
         {
-            analyzer = new MembersByAccessModifier(FileReader.Read(@"C:\SampleCode\Euler9.cs"));
         }
 
         public void SetDocument(string document)
@@ -29,11 +23,11 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
             }
         }
 
-        public IEnumerable<string> PublicConstructors 
+        public IEnumerable<string> PublicConstructors
         {
             get
             {
-                return analyzer.PublicConstructors;
+                return analyzer != null ? analyzer.PublicConstructors : null;
             }
         }
 
@@ -41,7 +35,7 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
         {
             get
             {
-                return analyzer.ProtectedConstructors;
+                return analyzer != null ? analyzer.ProtectedConstructors : null;
             }
         }
 
@@ -49,16 +43,15 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
         {
             get
             {
-                return analyzer.PrivateConstructors;
+                return analyzer != null ? analyzer.PrivateConstructors : null;
             }
         }
 
-        
-        public IEnumerable<string> PublicMethods 
+        public IEnumerable<string> PublicMethods
         {
             get
             {
-                return analyzer.PublicMethods;
+                return analyzer != null ? analyzer.PublicMethods : null;
             }
         }
 
@@ -66,23 +59,23 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
         {
             get
             {
-                return analyzer.ProtectedMethods;
+                return analyzer != null ? analyzer.ProtectedMethods : null;
             }
         }
 
-        public IEnumerable<string> PrivateMethods 
+        public IEnumerable<string> PrivateMethods
         {
             get
             {
-                return analyzer.PrivateMethods;
+                return analyzer != null ? analyzer.PrivateMethods : null;
             }
         }
 
-        public IEnumerable<string> PublicProperties 
+        public IEnumerable<string> PublicProperties
         {
             get
             {
-                return analyzer.PublicProperties;
+                return analyzer != null ? analyzer.PublicProperties : null;
             }
         }
 
@@ -90,7 +83,7 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
         {
             get
             {
-                return analyzer.ProtectedProperties;
+                return analyzer != null ? analyzer.ProtectedProperties : null;
             }
         }
 
@@ -98,7 +91,7 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
         {
             get
             {
-                return analyzer.PrivateProperties;
+                return analyzer != null ? analyzer.PrivateProperties : null;
             }
         }
 
@@ -106,49 +99,48 @@ namespace Synopsis.SynopsisVSPkg.ViewModels
         {
             get
             {
-                return analyzer.PublicFields;
+                return analyzer != null ? analyzer.PublicFields : null;
             }
         }
 
-        public IEnumerable<string> ProtectedFields 
+        public IEnumerable<string> ProtectedFields
         {
             get
             {
-                return analyzer.ProtectedFields;
+                return analyzer != null ? analyzer.ProtectedFields : null;
             }
         }
 
-        public IEnumerable<string> PrivateFields 
+        public IEnumerable<string> PrivateFields
         {
             get
             {
-                return analyzer.PrivateFields;
+                return analyzer != null ? analyzer.PrivateFields : null;
             }
         }
 
-        //public IEnumerable<string> PublicEvents 
+        //public IEnumerable<string> PublicEvents
         //{
         //    get
         //    {
-        //        return analyzer.PublicEvents;
+        //        return analyzer != null ? analyzer.PublicEvents : null;
         //    }
         //}
 
-        //public IEnumerable<string> ProtectedEvents 
+        //public IEnumerable<string> ProtectedEvents
         //{
         //    get
         //    {
-        //        return analyzer.ProtectedEvents;
+        //        return analyzer != null ? analyzer.ProtectedEvents : null;
         //    }
         //}
 
-        //public IEnumerable<string> PrivateEvents 
+        //public IEnumerable<string> PrivateEvents
         //{
         //    get
         //    {
-        //        return analyzer.PrivateEvents;
+        //        return analyzer != null ? analyzer.PrivateEvents : null;
         //    }
         //}
-
     }
 }
