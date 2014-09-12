@@ -16,16 +16,18 @@ namespace Synopsis
 
         public MethodsData Analyze()
         {
-            var methodDefinitionData = new List<MethodDefinition>();
+            var methodDefinitionData = GetMethodDeclarations();
 
-            foreach (var method in MethodNodes)
-            {
-                var methodDefData = new MethodDefinition();
-                methodDefData.Name = method.Identifier.ToString();
-                methodDefData.Line = method.GetLocation().GetLineSpan(true).StartLinePosition.Line;
-                methodDefinitionData.Add(methodDefData);
-            }
+            var methodCallData = GetMethodCalls();
 
+            var data = new MethodsData();
+            data.Calls = methodCallData;
+            data.Definitions = methodDefinitionData;
+            return data;
+        }
+
+        private List<MethodCall> GetMethodCalls()
+        {
             var methodCallData = new List<MethodCall>();
 
             foreach (var methodCall in MethodCalls)
@@ -46,11 +48,21 @@ namespace Synopsis
                     }
                 }
             }
+            return methodCallData;
+        }
 
-            var data = new MethodsData();
-            data.Calls = methodCallData;
-            data.Definitions = methodDefinitionData;
-            return data;
+        private List<MethodDefinition> GetMethodDeclarations()
+        {
+            var methodDefinitionData = new List<MethodDefinition>();
+
+            foreach (var method in MethodNodes)
+            {
+                var methodDefData = new MethodDefinition();
+                methodDefData.Name = method.Identifier.ToString();
+                methodDefData.Line = method.GetLocation().GetLineSpan(true).StartLinePosition.Line;
+                methodDefinitionData.Add(methodDefData);
+            }
+            return methodDefinitionData;
         }
     }
 }
