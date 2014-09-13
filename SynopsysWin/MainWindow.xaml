@@ -11,6 +11,9 @@
             <TabItem Header="Arcs">
                 <SynopsisViews:CallArcs x:Name="arcVisualizer" />
             </TabItem>
+            <TabItem Header="Thumbnail">
+                <SynopsisViews:Thumbnail x:Name="thumbnail" />
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
