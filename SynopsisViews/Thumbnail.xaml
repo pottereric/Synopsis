@@ -7,6 +7,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <!--<Canvas x:Name="LayoutRoot" ></Canvas>-->
-        <Image x:Name="MainImage" />
+        <Image x:Name="MainImage"  />
     </Grid>
 </UserControl>

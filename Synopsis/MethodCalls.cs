@@ -1,4 +1,9 @@
-﻿using Roslyn.Compilers.CSharp;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.CSharp.Extensions;
+using Microsoft.CodeAnalysis.Shared.Extensions;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+//using Roslyn.Compilers.CSharp;
 using Synopsis.Entities;
 using System;
 using System.Collections.Generic;
@@ -36,7 +41,7 @@ namespace Synopsis
 
                 var identifier = methodCall.DescendantNodes().OfType<IdentifierNameSyntax>().First();
                 callData.CalledMethodName = identifier.Identifier.ToString();
-                callData.CallingLine = methodCall.GetLocation().GetLineSpan(true).StartLinePosition.Line;
+                callData.CallingLine = methodCall.GetLocation().GetLineSpan().StartLinePosition.Line;
 
                 var methodCallSymbol = SematicModel.GetSymbolInfo(methodCall);
                 if (methodCallSymbol.Symbol != null)
@@ -45,7 +50,7 @@ namespace Synopsis
                     {
                         if (location.IsInSource)
                         {
-                            callData.CalledLine = location.GetLineSpan(true).StartLinePosition.Line;
+                            callData.CalledLine = location.GetLineSpan().StartLinePosition.Line;
                             methodCallData.Add(callData);
                         }
                     }
@@ -62,7 +67,7 @@ namespace Synopsis
             {
                 var methodDefData = new MethodDefinition();
                 methodDefData.Name = method.Identifier.ToString();
-                methodDefData.Line = method.GetLocation().GetLineSpan(true).StartLinePosition.Line;
+                methodDefData.Line = method.GetLocation().GetLineSpan().StartLinePosition.Line;
                 methodDefinitionData.Add(methodDefData);
             }
             return methodDefinitionData;

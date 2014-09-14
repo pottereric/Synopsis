@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Synopsis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,12 +30,35 @@ namespace SynopsisViews
 
         public Thumbnail()
         {
-            _bitmapStride = (_bitmapWidth * _pixelFormat.BitsPerPixel + 7) / 8;
-            _bitmapPixels = new byte[_bitmapStride * _bitmapHeight];
+
 
             InitializeComponent();
 
-            DrawTestPattern();
+            DrawImage();
+        }
+
+
+        private string _codeText;
+
+        public string CodeText
+        {
+            get
+            {
+                return _codeText;
+            }
+            set
+            {
+                _codeText = value;
+                DrawCode();
+            }
+        }
+
+        private void DrawImage()
+        {
+            _bitmapStride = (_bitmapWidth * _pixelFormat.BitsPerPixel + 7) / 8;
+            _bitmapPixels = new byte[_bitmapStride * _bitmapHeight];
+            //DrawTestPattern();
+            DrawCode();
 
             _bitmap = BitmapSource.Create(
                                             _bitmapWidth,
@@ -49,6 +73,20 @@ namespace SynopsisViews
 
             this.MainImage.Source = _bitmap;
         }
+
+        private void DrawCode()
+        {
+            var analyzer = new SyntaxAnalyzer(CodeText);
+
+            //var root = analyzer.Root;
+
+            
+        }
+
+        //private void DrawNodes(SyntaxNode node)
+        //{
+
+        //}
 
         private void DrawTestPattern()
         {

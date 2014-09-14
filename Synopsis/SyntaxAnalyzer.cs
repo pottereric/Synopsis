@@ -1,4 +1,7 @@
-﻿using Roslyn.Compilers.CSharp;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+//using Roslyn.Compilers.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +27,8 @@ namespace Synopsis
             {
                 if (_tree == null)
                 {
-                    _tree = SyntaxTree.ParseText(_code);
+                    //_tree = SyntaxTree.ParseText(_code);
+                    _tree = CSharpSyntaxTree.ParseText(_code);
                 }
                 return _tree;
             }

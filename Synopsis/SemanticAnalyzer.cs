@@ -1,5 +1,7 @@
-﻿using Roslyn.Compilers;
-using Roslyn.Compilers.CSharp;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+//using Roslyn.Compilers;
+//using Roslyn.Compilers.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +18,7 @@ namespace Synopsis
         }
 
 
-        private MetadataReference _mscorlib = MetadataReference.CreateAssemblyReference(
-                                 "mscorlib");
+        private MetadataReference _mscorlib; // = MetadataReference.CreateAssemblyReference( "mscorlib");
 
         private Compilation _complication;
         protected Compilation Compilation
@@ -26,7 +27,9 @@ namespace Synopsis
             {
                 if (_complication == null)
                 {
-                    _complication = Compilation.Create("HelloWorld")
+                    _mscorlib = new MetadataFileReference(typeof(object).Assembly.Location);
+
+                    _complication = CSharpCompilation.Create("HelloWorld")
                         .AddReferences(_mscorlib)
                         .AddSyntaxTrees(Tree);
                 }

@@ -1,4 +1,6 @@
-﻿using Roslyn.Compilers.CSharp;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+//using Roslyn.Compilers.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace Synopsis
             {
                 if (_publicMethods == null)
                 {
-                    _publicMethods = MethodNodes.Where(mds => mds.Modifiers.Any(SyntaxKind.PublicKeyword))
+                    _publicMethods = MethodNodes.Where(mds => mds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PublicKeyword))
                         .Select(mds => mds.Identifier.ToString());
                 }
                 return _publicMethods;
@@ -36,7 +38,7 @@ namespace Synopsis
             {
                 if (_protectedMethods == null)
                 {
-                    _protectedMethods = MethodNodes.Where(mds => mds.Modifiers.Any(SyntaxKind.ProtectedKeyword))
+                    _protectedMethods = MethodNodes.Where(mds => mds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.ProtectedKeyword))
                         .Select(mds => mds.Identifier.ToString());
                 }
                 return _protectedMethods;
@@ -51,7 +53,7 @@ namespace Synopsis
             {
                 if (_privateMethods == null)
                 {
-                    _privateMethods = MethodNodes.Where(mds => mds.Modifiers.Any(SyntaxKind.PrivateKeyword))
+                    _privateMethods = MethodNodes.Where(mds => mds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PrivateKeyword))
                         .Select(mds => mds.Identifier.ToString());
                 }
                 return _privateMethods;
@@ -67,7 +69,7 @@ namespace Synopsis
                 if (_publicFields == null)
                 {
                     // TODO, handle the field declarations better.
-                    _publicFields = FieldNodes.Where(fds => fds.Modifiers.Any(SyntaxKind.PublicKeyword)).Select(fds => fds.Declaration.Variables.First().Identifier.ToString());
+                    _publicFields = FieldNodes.Where(fds => fds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PublicKeyword)).Select(fds => fds.Declaration.Variables.First().Identifier.ToString());
                 }
                 return _publicFields;
             }
@@ -81,7 +83,7 @@ namespace Synopsis
             {
                 if (_protectedFields == null)
                 {
-                    _protectedFields = FieldNodes.Where(fds => fds.Modifiers.Any(SyntaxKind.ProtectedKeyword)).Select(fds => fds.Declaration.Variables.First().Identifier.ToString());
+                    _protectedFields = FieldNodes.Where(fds => fds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.ProtectedKeyword)).Select(fds => fds.Declaration.Variables.First().Identifier.ToString());
                 }
                 return _protectedFields;
             }
@@ -96,7 +98,7 @@ namespace Synopsis
                 if (_privateFields == null)
                 {
                     // TODO, handle the field declarations better.
-                    _privateFields = FieldNodes.Where(fds => fds.Modifiers.Any(SyntaxKind.PrivateKeyword)).Select(fds => fds.Declaration.Variables.First().Identifier.ToString());
+                    _privateFields = FieldNodes.Where(fds => fds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PrivateKeyword)).Select(fds => fds.Declaration.Variables.First().Identifier.ToString());
                 }
                 return _privateFields;
             }
@@ -110,7 +112,7 @@ namespace Synopsis
             {
                 if (_publicProperties == null)
                 {
-                    _publicProperties = PropertyNodes.Where(pds => pds.Modifiers.Any(SyntaxKind.PublicKeyword))
+                    _publicProperties = PropertyNodes.Where(pds => pds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PublicKeyword))
                         .Select(mds => mds.Identifier.ToString());
                 }
                 return _publicProperties;
@@ -125,7 +127,7 @@ namespace Synopsis
             {
                 if (_protectedProperties == null)
                 {
-                    _protectedProperties = PropertyNodes.Where(pds => pds.Modifiers.Any(SyntaxKind.ProtectedKeyword))
+                    _protectedProperties = PropertyNodes.Where(pds => pds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.ProtectedKeyword))
                         .Select(mds => mds.Identifier.ToString());
                 }
                 return _protectedProperties;
@@ -140,7 +142,7 @@ namespace Synopsis
             {
                 if (_privateProperties == null)
                 {
-                    _privateProperties = PropertyNodes.Where(pds => pds.Modifiers.Any(SyntaxKind.PrivateKeyword))
+                    _privateProperties = PropertyNodes.Where(pds => pds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PrivateKeyword))
                         .Select(mds => mds.Identifier.ToString());
                 }
                 return _privateProperties;
@@ -155,7 +157,7 @@ namespace Synopsis
             {
                 if (_publicConstructors == null)
                 {
-                    _publicConstructors = ConstructorNodes.Where(cds => cds.Modifiers.Any(SyntaxKind.PublicKeyword)).Select(cds => cds.Identifier.ToString());
+                    _publicConstructors = ConstructorNodes.Where(cds => cds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PublicKeyword)).Select(cds => cds.Identifier.ToString());
                 }
                 return _publicConstructors;
             }
@@ -169,7 +171,7 @@ namespace Synopsis
             {
                 if (_protectedConstructors == null)
                 {
-                    _protectedConstructors = ConstructorNodes.Where(cds => cds.Modifiers.Any(SyntaxKind.ProtectedKeyword)).Select(cds => cds.Identifier.ToString());
+                    _protectedConstructors = ConstructorNodes.Where(cds => cds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.ProtectedKeyword)).Select(cds => cds.Identifier.ToString());
                 }
                 return _protectedConstructors;
             }
@@ -183,7 +185,7 @@ namespace Synopsis
             {
                 if (_privateConstructors == null)
                 {
-                    _privateConstructors = ConstructorNodes.Where(cds => cds.Modifiers.Any(SyntaxKind.PrivateKeyword)).Select(cds => cds.Identifier.ToString());
+                    _privateConstructors = ConstructorNodes.Where(cds => cds.Modifiers.Any(m => m.CSharpKind() == SyntaxKind.PrivateKeyword)).Select(cds => cds.Identifier.ToString());
                 }
                 return _privateConstructors;
             }
