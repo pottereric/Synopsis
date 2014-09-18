@@ -2,3 +2,4 @@
 [ ] Make it work with a file with multiple namespaces
 [ ] Get Protected Methods
 [ ] Get data on fields, properties, and events
+[ ] Assume members without an access modifier are private
