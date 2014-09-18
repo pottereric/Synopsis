@@ -4,8 +4,16 @@
         xmlns:SynopsisVSPkg="clr-namespace:Synopsis.SynopsisVSPkg;assembly=SynopsisViews" x:Class="SynopsysWin.MainWindow"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-
-        <!--<SynopsisVSPkg:MemberByAccessModifierView x:Name="memberAccessModifierView" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="476"/>-->
-        <SynopsisViews:CallArcs x:Name="arcVisualizer" />
+        <TabControl >
+            <TabItem Header="Members" x:Name="MembersTab">
+                <SynopsisVSPkg:MemberByAccessModifierView x:Name="memberAccessModifierView" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="476"/>
+            </TabItem>
+            <TabItem Header="Arcs">
+                <SynopsisViews:CallArcs x:Name="arcVisualizer" />
+            </TabItem>
+            <TabItem Header="Thumbnail">
+                <SynopsisViews:Thumbnail x:Name="thumbnail" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

@@ -72,6 +72,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Thumbnail.xaml.cs">
+      <DependentUpon>Thumbnail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ArcAdder.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MemberByAccessModifierViewModel.cs" />
@@ -94,6 +97,10 @@
     <Page Include="MemberByAccessModifierView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Thumbnail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

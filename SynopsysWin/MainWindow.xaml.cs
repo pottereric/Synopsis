@@ -1,4 +1,5 @@
 ﻿using Synopsis;
+using Synopsis.SynopsisVSPkg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,9 @@ namespace SynopsysWin
         public MainWindow()
         {
             InitializeComponent();
+
+            memberAccessModifierView.FileText = FileReader.Read(@"..\..\..\TestFiles\Simple.cs");
+
             //arcVisualizer.CodeText = FileReader.Read(@"..\..\..\TestFiles\SimpleDocStore.cs");
             //arcVisualizer.CodeText = FileReader.Read(@"..\..\..\TestFiles\Euler9.cs");
             arcVisualizer.CodeText = FileReader.Read(@"..\..\..\TestFiles\Simple.cs");
