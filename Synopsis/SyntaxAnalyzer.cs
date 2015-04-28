@@ -27,7 +27,6 @@ namespace Synopsis
             {
                 if (_tree == null)
                 {
-                    //_tree = SyntaxTree.ParseText(_code);
                     _tree = CSharpSyntaxTree.ParseText(_code);
                 }
                 return _tree;

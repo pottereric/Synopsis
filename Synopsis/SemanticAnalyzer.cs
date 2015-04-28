@@ -20,20 +20,20 @@ namespace Synopsis
 
         private MetadataReference _mscorlib; // = MetadataReference.CreateAssemblyReference( "mscorlib");
 
-        private Compilation _complication;
+        private Compilation _compliation;
         protected Compilation Compilation
         {
             get
             {
-                if (_complication == null)
+                if (_compliation == null)
                 {
                     _mscorlib = new MetadataFileReference(typeof(object).Assembly.Location);
 
-                    _complication = CSharpCompilation.Create("HelloWorld")
+                    _compliation = CSharpCompilation.Create("HelloWorld")
                         .AddReferences(_mscorlib)
                         .AddSyntaxTrees(Tree);
                 }
-                return _complication;
+                return _compliation;
             }
 
         }

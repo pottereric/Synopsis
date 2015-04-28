@@ -35,15 +35,15 @@ namespace Synopsis
         {
             var methodCallData = new List<MethodCall>();
 
-            foreach (var methodCall in MethodCalls)
+            foreach (var methodCallSyntax in MethodCalls)
             {
                 var callData = new MethodCall();
 
-                var identifier = methodCall.DescendantNodes().OfType<IdentifierNameSyntax>().First();
+                var identifier = methodCallSyntax.DescendantNodes().OfType<IdentifierNameSyntax>().First();
                 callData.CalledMethodName = identifier.Identifier.ToString();
-                callData.CallingLine = methodCall.GetLocation().GetLineSpan().StartLinePosition.Line;
+                callData.CallingLine = methodCallSyntax.GetLocation().GetLineSpan().StartLinePosition.Line;
 
-                var methodCallSymbol = SematicModel.GetSymbolInfo(methodCall);
+                var methodCallSymbol = SematicModel.GetSymbolInfo(methodCallSyntax);
                 if (methodCallSymbol.Symbol != null)
                 {
                     foreach (var location in methodCallSymbol.Symbol.Locations)
