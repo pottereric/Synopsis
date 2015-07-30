@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A4293D1-32C1-4DBC-A630-19E48D988897}"
+	ProjectSection(SolutionItems) = preProject
+		IntegrationTests.testsettings = IntegrationTests.testsettings
+		UnitTests.testsettings = UnitTests.testsettings
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synopsis", "Synopsis\Synopsis.csproj", "{4556266D-1A1F-4174-B046-2E3D3E8C7AEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synopsis_UnitTests", "Synopsis_UnitTests\Synopsis_UnitTests.csproj", "{DA1DDDCE-C8D9-491D-943D-EF50E181603E}"
@@ -11,12 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisVSPkg", "SynopsisVS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisVSPkg_IntegrationTests", "SynopsisVSPkg\SynopsisVSPkg_IntegrationTests\SynopsisVSPkg_IntegrationTests.csproj", "{64BEC4B8-5DF0-4451-BDA9-43836C400853}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A4293D1-32C1-4DBC-A630-19E48D988897}"
-	ProjectSection(SolutionItems) = preProject
-		IntegrationTests.testsettings = IntegrationTests.testsettings
-		UnitTests.testsettings = UnitTests.testsettings
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisVSPkg_UnitTests", "SynopsisVSPkg\SynopsisVSPkg_UnitTests\SynopsisVSPkg_UnitTests.csproj", "{F211C5E6-6555-4FEA-88B1-BD2E64F62AD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisViews", "SynopsisViews\SynopsisViews.csproj", "{B6D7EDE0-4C87-40F8-B19D-6EE646F5DF97}"
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsysWin", "SynopsysWin\SynopsysWin.csproj", "{C8458F09-3A11-4288-B42E-FAFBC8EB0336}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisViews.UnitTests", "SynopsisViews.UnitTests\SynopsisViews.UnitTests.csproj", "{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SynopsisWeb", "SynopsisWeb\SynopsisWeb.xproj", "{F2FC79E2-56DB-48B1-ABDB-E5080E2EF02D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE4A0886-7260-4E00-8203-BDAB30F3A5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FC79E2-56DB-48B1-ABDB-E5080E2EF02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FC79E2-56DB-48B1-ABDB-E5080E2EF02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FC79E2-56DB-48B1-ABDB-E5080E2EF02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FC79E2-56DB-48B1-ABDB-E5080E2EF02D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
