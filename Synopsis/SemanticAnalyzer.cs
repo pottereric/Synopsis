@@ -1,7 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-//using Roslyn.Compilers;
-//using Roslyn.Compilers.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +25,8 @@ namespace Synopsis
             {
                 if (_complication == null)
                 {
-                    _mscorlib = new MetadataFileReference(typeof(object).Assembly.Location);
+                    //_mscorlib = new MetadataFileReference(typeof(object).Assembly.Location);
+                    _mscorlib = MetadataReference.CreateFromFile(typeof(object).Assembly.Location);
 
                     _complication = CSharpCompilation.Create("HelloWorld")
                         .AddReferences(_mscorlib)

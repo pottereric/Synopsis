@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23023.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A4293D1-32C1-4DBC-A630-19E48D988897}"
+	ProjectSection(SolutionItems) = preProject
+		IntegrationTests.testsettings = IntegrationTests.testsettings
+		UnitTests.testsettings = UnitTests.testsettings
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synopsis", "Synopsis\Synopsis.csproj", "{4556266D-1A1F-4174-B046-2E3D3E8C7AEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synopsis_UnitTests", "Synopsis_UnitTests\Synopsis_UnitTests.csproj", "{DA1DDDCE-C8D9-491D-943D-EF50E181603E}"
@@ -10,12 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisVSPkg", "SynopsisVSPkg\SynopsisVSPkg.csproj", "{898ECE2E-6A1C-43CA-A2E3-7BD6F2BFD5D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisVSPkg_IntegrationTests", "SynopsisVSPkg\SynopsisVSPkg_IntegrationTests\SynopsisVSPkg_IntegrationTests.csproj", "{64BEC4B8-5DF0-4451-BDA9-43836C400853}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A4293D1-32C1-4DBC-A630-19E48D988897}"
-	ProjectSection(SolutionItems) = preProject
-		IntegrationTests.testsettings = IntegrationTests.testsettings
-		UnitTests.testsettings = UnitTests.testsettings
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynopsisVSPkg_UnitTests", "SynopsisVSPkg\SynopsisVSPkg_UnitTests\SynopsisVSPkg_UnitTests.csproj", "{F211C5E6-6555-4FEA-88B1-BD2E64F62AD5}"
 EndProject

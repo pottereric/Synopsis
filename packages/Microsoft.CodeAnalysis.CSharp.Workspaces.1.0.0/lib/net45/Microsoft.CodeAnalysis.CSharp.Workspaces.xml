@@ -19,6 +19,11 @@
             and constructed via provided factory.
             </summary>
         </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.CodeGeneration.CSharpSyntaxGenerator.ShiftTrivia(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.SyntaxNode)">
+            <summary>
+            Moves the trailing trivia from the node's previous token to the end of the node
+            </summary>
+        </member>
         <member name="T:Microsoft.CodeAnalysis.CSharp.CSharpWorkspaceResources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -87,25 +92,6 @@
             the specified argument is greater than the number of parameters.
             </summary>
         </member>
-        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.BreakpointSpans.TryGetClosestBreakpointSpan(Microsoft.CodeAnalysis.SyntaxNode,System.Int32,Microsoft.CodeAnalysis.Text.TextSpan@)">
-            <summary>
-            Given a syntax token determines a text span delimited by the closest applicable sequence points 
-            encompassing the token.
-            </summary>
-            <remarks>
-            If the span exists it is possible to place a breakpoint at the given position.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.BreakpointSpans.IsBreakableExpression(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax)">
-             <summary>
-             There are a few places where we allow breakpoints on expressions. 
-            
-             1) When the expression is the body of a lambda/method/operator/property/indexer.
-             2) The expression is a breakable expression inside a query expression.
-             3) The expression is in a for statement initializer, condition or incrementor.
-             4) The expression is a foreach initializer.
-             </summary>
-        </member>
         <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.ExpressionSyntaxExtensions.CastIfPossible(Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax,Microsoft.CodeAnalysis.ITypeSymbol,System.Int32,Microsoft.CodeAnalysis.SemanticModel,System.Boolean@)">
             <summary>
             Adds to <paramref name="targetType"/> if it does not contain an anonymous
@@ -168,6 +154,17 @@
             Operator precedence classes from section 7.3.1 of the C# language specification.
             </summary>
         </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxKindExtensions.Contains(Microsoft.CodeAnalysis.CSharp.SyntaxKind[],Microsoft.CodeAnalysis.CSharp.SyntaxKind)">
+            <summary>
+            Determine if the given <see cref="T:Microsoft.CodeAnalysis.CSharp.SyntaxKind"/> array contains the given kind.
+            </summary>
+            <param name="kinds">Array to search</param>
+            <param name="kind">Sought value</param>
+            <returns>True if <paramref name = "kinds"/> contains the value<paramref name= "kind"/>.</returns>
+            <remarks>PERF: Not using Array.IndexOf here because it results in a call to IndexOf on the
+            default EqualityComparer for SyntaxKind.The default comparer for SyntaxKind is the
+            ObjectEqualityComparer which results in boxing allocations.</remarks>
+        </member>
         <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.GetEnclosingUsingDirectives(Microsoft.CodeAnalysis.SyntaxNode)">
             <summary>
             Returns the list of using directives that affect <paramref name="node"/>. The list will be returned in
@@ -226,12 +223,12 @@
             breaking any pp constructs.
             </summary>
         </member>
-        <member name="F:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.FindSkippedTokenForward">
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.s_findSkippedTokenForward">
             <summary>
             Look inside a trivia list for a skipped token that contains the given position.
             </summary>
         </member>
-        <member name="F:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.FindSkippedTokenBackward">
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxNodeExtensions.s_findSkippedTokenBackward">
             <summary>
             Look inside a trivia list for a skipped token that contains the given position.
             </summary>
@@ -277,7 +274,7 @@
             <param name="genericIdentifier">The "name" of the generic identifier, last token before
             the "&amp;"</param>
             <returns>The last token in the name</returns>
-            <remarks>This is related to the code in <see cref="M:SyntaxTreeExtensions.IsInPartiallyWrittenGeneric"/></remarks>
+            <remarks>This is related to the code in <see cref="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTreeExtensions.IsInPartiallyWrittenGeneric(Microsoft.CodeAnalysis.SyntaxTree,System.Int32,System.Threading.CancellationToken)"/></remarks>
         </member>
         <member name="M:Microsoft.CodeAnalysis.CSharp.Extensions.SyntaxTreeExtensions.FindTokenOnRightOfPosition(Microsoft.CodeAnalysis.SyntaxTree,System.Int32,System.Threading.CancellationToken,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
@@ -293,6 +290,24 @@
             <summary>
             Determines whether the specified TypeSyntax is actually 'var'.
             </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.LabelPositionOptions.LeftMost">
+            Placed in the Zeroth column of the text editor
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.LabelPositionOptions.OneLess">
+            Placed at one less indent to the current context
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.LabelPositionOptions.NoIndent">
+            Placed at the same indent as the current context
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.BinaryOperatorSpacingOptions.Single">
+            Single Spacing
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.BinaryOperatorSpacingOptions.Ignore">
+            Ignore Formatting
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.CSharp.Formatting.BinaryOperatorSpacingOptions.Remove">
+            Remove Spacing
         </member>
         <member name="T:Microsoft.CodeAnalysis.CSharp.Formatting.FormattingResult">
             <summary>
@@ -350,6 +365,15 @@
             </summary>
             <param name="token">The token to get the complexification target for.</param>
             <returns></returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.CSharp.Rename.CSharpRenameConflictLanguageService.GetSemanticModelForNode(Microsoft.CodeAnalysis.SyntaxNode,Microsoft.CodeAnalysis.SemanticModel)">
+            <summary>
+            Gets the semantic model for the given node.
+            If the node belongs to the syntax tree of the original semantic model, then returns originalSemanticModel.
+            Otherwise, returns a speculative model.
+            The assumption for the later case is that span start position of the given node in it's syntax tree is same as
+            the span start of the original node in the original syntax tree.
+            </summary>
         </member>
         <member name="M:Microsoft.CodeAnalysis.CSharp.Simplification.CSharpSimplificationService.NodesAndTokensToReduceComputer.Compute(Microsoft.CodeAnalysis.SyntaxNode,System.Func{Microsoft.CodeAnalysis.SyntaxNodeOrToken,System.Boolean})">
             <summary>
